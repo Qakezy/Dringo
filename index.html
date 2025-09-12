@@ -1,0 +1,281 @@
+<!--
+index.html
+DrinGo marketing single-page site (MVP)
+- Structure: semantic sections with BEM-style classes
+- Key decisions: Mobile-first layout, accessible landmarks, inline SVG icons, JSON-LD included
+- How to run: Open this file in a browser. No build step required.
+- Edit brand colors: See :root variables in styles.css (primary, bg, accent, text)
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DrinGo — Connect with Welsh tutors</title>
+  <meta name="description" content="DrinGo helps learners connect with Welsh tutors online. Book lessons, learn with native tutors, and grow your Cymraeg." />
+  <meta name="theme-color" content="#0f1720" />
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="DrinGo — Welsh tutors online" />
+  <meta property="og:description" content="Find and book Welsh tutors with DrinGo. Real tutors, real lessons, real progress." />
+  <meta property="og:image" content="" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <!-- Favicon placeholder (SVG data URI) -->
+  <link rel="icon" href="https://i.ibb.co/G3sjs3pJ/Drin-GO-final.png" type="image/png" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Manrope:wght@600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css">
+  <!-- JSON-LD Organization/Product-->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Organization",
+    "name":"DrinGo",
+    "url":"https://example.local/",
+    "logo":"data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Crect%20width='100'%20height='100'%20fill='%230f1720'/%3E%3Ctext%20x='50'%20y='60'%20font-size='46'%20text-anchor='middle'%20fill='%23ff4d4f'%20font-family='sans-serif'%3ED%3C/text%3E%3C/svg%3E",
+    "sameAs":[]
+  }
+  </script>
+</head>
+<body class="page" data-theme="dark">
+  <!-- Scroll progress -->
+  <div class="progress" aria-hidden="true"></div>
+
+  <!-- Sticky Nav -->
+  <header class="header header--sticky" role="banner">
+    <nav class="nav" aria-label="Main navigation">
+      <div class="nav__left">
+        <a class="nav__brand" href="#hero" aria-label="DrinGo home">
+          <!-- Placeholder glyph -->
+         <a href="#" class="nav__brand">
+  <img src="https://i.ibb.co/G3sjs3pJ/Drin-GO-final.png" alt="DrinGO logo" class="nav__logo-img" style="width:70px;height:70px;" />
+  <span class="nav__title">DrinGO</span>
+</a>
+        </a>
+      </div>
+
+      <button class="nav__toggle" aria-expanded="false" aria-controls="nav-list" title="Toggle menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+
+      <ul id="nav-list" class="nav__list">
+        <li><a class="nav__link" href="#how">How</a></li>
+        <li><a class="nav__link" href="#features">Features</a></li>
+      
+        <li><a class="nav__link" href="#faq">FAQ</a></li>
+      </ul>
+
+      <div class="nav__right">
+        <button id="themeToggle" class="btn btn--ghost" aria-pressed="false" title="Toggle theme">🌗</button>
+        <a class="btn btn--primary" href="#email" id="primaryCta">Join DrinGO!</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Back to top FAB -->
+  <button id="btnTop" class="fab" aria-label="Back to top">↑</button>
+
+  <!-- HERO -->
+  <main>
+      <section id="hero" class="hero" role="region" aria-label="Hero">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="container hero__inner">
+      
+      <div class="hero__copy">
+      <h1 class="hero__title">Speak Welsh with real tutors.</h1>
+      <p class="hero__lead">Find native Welsh tutors, book lessons, and practice speaking — simple, human, and flexible.</p>
+      
+      <div class="hero__ctas">
+        <!-- HERO waitlist form excerpt -->
+        <div class="waitlist-wrapper">
+        <form id="emailForm" class="email-form" aria-label="Join waitlist">
+          <label for="email">Your email</label>
+          <input id="email" name="email" autocomplete="email" class="input" type="email" placeholder="you@example.com" required inputmode="email">
+          <button class="btn btn--accent" type="submit">Join waitlist</button>
+          <p id="emailMsg" class="email-form__msg" role="status" aria-live="polite"></p>
+        </form>
+        </div>
+      </div>
+      </div>
+      
+      <div class="hero__media" aria-hidden="false">
+      <!-- Device mockup image -->
+      <div class="device">
+  <div class="phone-frame">
+    <img src="https://i.ibb.co/7xzy3GtF/Add-a-subheading.png" alt="Device mockup showing DrinGo app" class="mock-img" style="max-width:100%;border-radius:12px;" />
+  </div>
+  <div class="device__shadow" aria-hidden="true"></div>
+</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- HOW IT WORKS -->
+    <section id="how" class="how" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title" class="section__title">How it works</h2>
+        <p class="section__subtitle">Three simple steps to start speaking Cymraeg.</p>
+
+        <ol class="steps">
+          <li class="steps__item">
+            <div class="steps__icon" aria-hidden="true">
+              <!-- icon register -->
+              <svg width="48" height="48" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM4 20a8 8 0 0 1 16 0H4z"></path></svg>
+            </div>
+            <div class="steps__content">
+              <h3 class="steps__title">Register</h3>
+              <p class="steps__desc">Create a learner or tutor profile in minutes.</p>
+            </div>
+          </li>
+
+          <li class="steps__item">
+            <div class="steps__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-search-icon lucide-search"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+            </div>
+            <div class="steps__content">
+              <h3 class="steps__title">Find a tutor</h3>
+              <p class="steps__desc">Filter by price, level, availability and ratings.</p>
+            </div>
+          </li>
+
+          <li class="steps__item">
+            <div class="steps__icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap-icon lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
+            </div>
+            <div class="steps__content">
+              <h3 class="steps__title">Learn</h3>
+              <p class="steps__desc">Book lessons, join video sessions, and track progress.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FEATURES GRID -->
+    <section id="features" class="features" aria-labelledby="features-title">
+      <div class="container">
+        <h2 id="features-title" class="section__title">Features</h2>
+        <p class="section__subtitle">Tools that make lessons simple and effective.</p>
+
+        <div class="grid grid--features" role="list">
+          <article class="card card--feature" role="listitem">
+            <div class="card__icon" aria-hidden="true">📅</div>
+            <h3 class="card__title">Flexible scheduling</h3>
+            <p class="card__body">Set availability and let learners pick a slot that fits.</p>
+          </article>
+
+          <article class="card card--feature">
+            <div class="card__icon" aria-hidden="true">💬</div>
+            <h3 class="card__title">In-app messaging</h3>
+            <p class="card__body">Ask questions before booking and confirm lesson goals.</p>
+          </article>
+
+          <article class="card card--feature">
+            <div class="card__icon" aria-hidden="true">⭐</div>
+            <h3 class="card__title">Verified tutors</h3>
+            <p class="card__body">Docs + reviews help learners choose with confidence.</p>
+          </article>
+
+          <article class="card card--feature">
+            <div class="card__icon" aria-hidden="true">💳</div>
+            <h3 class="card__title">Secure payments</h3>
+            <p class="card__body">Payments handled by Stripe. Payouts to tutors.</p>
+          </article>
+
+          <article class="card card--feature">
+            <div class="card__icon" aria-hidden="true">📚</div>
+            <h3 class="card__title">Resource packs</h3>
+            <p class="card__body">Downloadable guides and practice materials.</p>
+          </article>
+
+          <article class="card card--feature">
+            <div class="card__icon" aria-hidden="true">🌍</div>
+            <h3 class="card__title">Global tutors</h3>
+            <p class="card__body">Find native speakers across timezones.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- FAQ -->
+<section id="faq" class="faq" aria-labelledby="faq-title">
+  <div class="container">
+    <h2 id="faq-title" class="section__title">FAQ</h2>
+    <div class="accordion" role="tablist" aria-label="Frequently asked questions">
+      <div class="accordion__item">
+        <button type="button" class="accordion__button" aria-expanded="false">How does verification work?</button>
+        <div class="accordion__panel" hidden>
+          <p>We ask tutors to submit qualifications and a brief video. Admin reviews and marks verified.</p>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button type="button" class="accordion__button" aria-expanded="false">How do payments work?</button>
+        <div class="accordion__panel" hidden>
+          <p>Payments are made at booking. Tutors receive payouts after the lesson minus platform fees.</p>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button type="button" class="accordion__button" aria-expanded="false">Can I teach children?</button>
+        <div class="accordion__panel" hidden>
+          <p>Yes, but we recommend confirming safeguarding requirements and setting session expectations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- CTA -->
+    <section id="cta" class="cta" role="region" aria-label="Call to action">
+      <div class="container cta__inner">
+        <h2 class="cta__title">Ready to start?</h2>
+        <p class="cta__desc">Join the waitlist or sign up today.</p>
+        <div class="cta__actions">
+          <a class="btn btn--lg btn--primary" href="#email">Join DrinGO!</a>
+        
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
+      <div class="footer__col">
+        <a class="nav__brand" href="#">
+          <img src="https://i.ibb.co/G3sjs3pJ/Drin-GO-final.png" alt="DrinGO logo" style="width:40px;height:40px;vertical-align:middle;" />
+          <span>DrinGo</span>
+        </a></a>
+        <p class="muted">Learn Welsh with native tutors.</p>
+      </div>
+
+      <div class="footer__col">
+        <nav aria-label="Footer navigation">
+          <ul class="footer__nav">
+            <li><a href="#how">How</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer__col">
+        <div class="socials" aria-hidden="false">
+        <a class="social" href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+<a class="social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+<a class="social" href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <p class="muted small">© <span id="year"></span> DrinGo. Terms & privacy apply.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script defer src="app.js"></script>
+</body>
+</html>
